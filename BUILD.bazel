@@ -1,0 +1,28 @@
+cc_binary(
+    name = "hello_world",
+    srcs = ["hello_world.cc"],
+    deps = [
+        ":greeting_cc_proto",
+        "@abseil-cpp//absl/strings",
+    ],
+)
+
+cc_proto_library(
+    name = "greeting_cc_proto",
+    deps = [":greeting_proto"],
+)
+
+proto_library(
+    name = "greeting_proto",
+    srcs = ["greeting.proto"],
+)
+
+cc_test(
+    name = "hello_world_test",
+    size = "small",
+    srcs = ["hello_world_test.cc"],
+    deps = [
+        "@googletest//:gtest",
+        "@googletest//:gtest_main",
+    ],
+)

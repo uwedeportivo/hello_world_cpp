@@ -1,0 +1,6 @@
+bazel-bin
+bazel-greeting
+bazel-out
+bazel-testlogs
+.clwb
+MODULE.bazel.lock
