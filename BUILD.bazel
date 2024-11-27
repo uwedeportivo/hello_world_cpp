@@ -1,3 +1,18 @@
+cc_library(
+    name = "sqlitecpp",
+    srcs = glob(["SQLiteCpp/src/*.cpp"]),
+    hdrs = glob(["SQLiteCpp/include/SQLiteCpp/*.h"]),
+    copts = ["-Isqlite3"],
+    defines = [
+        "SQLITE_DBCONFIG_ENABLE_LOAD_EXTENSION",
+        "SQLITE_OMIT_LOAD_EXTENSION",
+    ],
+    strip_include_prefix = "SQLiteCpp/include",
+    deps = [
+        "@sqlite3",
+    ],
+)
+
 cc_binary(
     name = "hello_world",
     srcs = ["hello_world.cc"],

@@ -5,3 +5,4 @@
 bazel_dep(name = "abseil-cpp", version = "20240722.0.bcr.1")
 bazel_dep(name = "googletest", version = "1.15.2")
 bazel_dep(name = "protobuf", version = "29.0-rc3")
+bazel_dep(name = "sqlite3", version = "3.47.0")
