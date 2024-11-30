@@ -1,0 +1,29 @@
+all_content = """filegroup(
+    name = "all",
+    srcs = glob(["**"]),
+    visibility = ["//visibility:public"]
+)
+"""
+
+# WORKSPACE.bazel
+new_local_repository(
+    name = "openssl",
+    build_file_content = """
+cc_library(
+  name = "ssl",
+  srcs = ["lib/libssl.a"],
+  hdrs = glob(["include/openssl/*.h"]),
+  strip_include_prefix = "/include",
+  visibility = ["//visibility:public"],
+)
+
+cc_library(
+  name = "crypto",
+  srcs = ["lib/libcrypto.a"],
+  hdrs = glob(["include/openssl/*.h"]),
+  strip_include_prefix = "/include",
+  visibility = ["//visibility:public"],
+)
+""",
+    path = "/opt/homebrew/Cellar/openssl@3/3.4.0",
+)

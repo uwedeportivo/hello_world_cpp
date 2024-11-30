@@ -1,3 +1,12 @@
 [submodule "SQLiteCpp"]
 	path = SQLiteCpp
 	url = https://github.com/SRombauts/SQLiteCpp.git
+[submodule "marl"]
+	path = marl
+	url = https://github.com/google/marl.git
+[submodule "cpp-peglib"]
+	path = cpp-peglib
+	url = https://github.com/yhirose/cpp-peglib.git
+[submodule "json"]
+	path = json
+	url = https://github.com/nlohmann/json.git

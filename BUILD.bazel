@@ -1,3 +1,20 @@
+load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
+
+refresh_compile_commands(
+    name = "refresh_compile_commands",
+
+    # Specify the targets of interest.
+    # For example, specify a dict of targets and any flags required to build.
+    targets = {
+      "//:hello_world": "",
+    },
+    # No need to add flags already in .bazelrc. They're automatically picked up.
+    # If you don't need flags, a list of targets is also okay, as is a single target string.
+    # Wildcard patterns, like //... for everything, *are* allowed here, just like a build.
+      # As are additional targets (+) and subtractions (-), like in bazel query https://docs.bazel.build/versions/main/query.html#expressions
+    # And if you're working on a header-only library, specify a test or binary target that compiles it.
+)
+
 cc_library(
     name = "sqlitecpp",
     srcs = glob(["SQLiteCpp/src/*.cpp"]),
@@ -13,12 +30,23 @@ cc_library(
     ],
 )
 
+cc_library(
+    name = "peg",
+    hdrs = ["cpp-peglib/peglib.h"],
+    deps = [],
+)
+
 cc_binary(
     name = "hello_world",
     srcs = ["hello_world.cc"],
     deps = [
         ":greeting_cc_proto",
+        ":peg",
+        ":sqlitecpp",
+        "//marl",
         "@abseil-cpp//absl/strings",
+        "@openssl//:crypto",
+        "@openssl//:ssl",
     ],
 )
 
