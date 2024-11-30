@@ -6,6 +6,7 @@
 #include "greeting.pb.h"
 #include "SQLiteCpp/include/SQLiteCpp/Database.h"
 #include "cpp-peglib/peglib.h"
+#include "cpp-httplib/httplib.h"
 #include "marl/include/marl/defer.h"
 #include "marl/include/marl/event.h"
 #include "marl/include/marl/scheduler.h"
@@ -107,5 +108,10 @@ int main() {
 
   std::cout << "sha256: " << convertToHex<std::array<uint8_t, 32>>(ss) << "\n";
 
+  httplib::Client cli("https://news.ycombinator.com");
+
+  auto res = cli.Get("/user?id=uwehn");
+
+  std::cout << "body: " << res->body << "\n";
   return 0;
 }
