@@ -1,3 +1,21 @@
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
+
+filegroup(
+    name = "rocksdb-srcs",
+    srcs = glob(["rocksdb/**"]),
+    visibility = ["//visibility:public"],
+)
+
+cmake(
+    name = "rocksdb",
+    lib_source = ":rocksdb-srcs",
+    out_static_libs = ["librocksdb.a"],
+    deps = [
+        "@gflags",
+        "@snappy",
+    ],
+)
+
 cc_library(
     name = "sqlitecpp",
     srcs = glob(["SQLiteCpp/src/*.cpp"]),
