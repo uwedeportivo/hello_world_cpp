@@ -60,6 +60,7 @@ cc_binary(
         ":sqlitecpp",
         "//marl",
         "@abseil-cpp//absl/strings",
+        "@llvm-project//llvm:Support",
         "@openssl//:crypto",
         "@openssl//:ssl",
     ],
