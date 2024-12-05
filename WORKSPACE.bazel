@@ -24,9 +24,9 @@ cc_library(
     path = "/opt/homebrew/Cellar/openssl@3/3.4.0",
 )
 
-LLVM_COMMIT = "bd92e46204331b9af296f53abb708317e72ab7a8"
+LLVM_COMMIT = "ab4b5a2db582958af1ee308a790cfdb42bd24720"
 
-LLVM_SHA256 = "60f71fc5b237e10729edbed8cbe23b7081dabe254fbcb1ea82db8789cb7eaecf"
+LLVM_SHA256 = "da6ac0897bd4fcb509592d36236ddc9d5625fc018d4917f19aeb3ccf8bb6f83b"
 
 http_archive(
     name = "llvm-raw",
