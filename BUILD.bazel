@@ -1,21 +1,3 @@
-load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
-
-filegroup(
-    name = "rocksdb-srcs",
-    srcs = glob(["rocksdb/**"]),
-    visibility = ["//visibility:public"],
-)
-
-cmake(
-    name = "rocksdb",
-    lib_source = ":rocksdb-srcs",
-    out_static_libs = ["librocksdb.a"],
-    deps = [
-        "@gflags",
-        "@snappy",
-    ],
-)
-
 cc_library(
     name = "sqlitecpp",
     srcs = glob(["SQLiteCpp/src/*.cpp"]),
@@ -37,32 +19,17 @@ cc_library(
     deps = [],
 )
 
-cc_library(
-    name = "httplib",
-    hdrs = ["cpp-httplib/httplib.h"],
-    defines = [
-        "CPPHTTPLIB_OPENSSL_SUPPORT",
-    ],
-    deps = [
-        "@openssl//:crypto",
-        "@openssl//:ssl",
-    ],
-)
-
 cc_binary(
     name = "hello_world",
     srcs = ["hello_world.cc"],
     deps = [
-        "httplib",
         ":greeting_cc_proto",
         ":peg",
-        ":rocksdb",
         ":sqlitecpp",
-        "//marl",
         "@abseil-cpp//absl/strings",
-        "@llvm-project//llvm:Support",
-        "@openssl//:crypto",
-        "@openssl//:ssl",
+        "@cpp-httplib",
+        "@openssl",
+        "@rocksdb",
     ],
 )
 
@@ -81,6 +48,7 @@ cc_test(
     size = "small",
     srcs = ["hello_world_test.cc"],
     deps = [
+        ":hello_world",
         "@googletest//:gtest",
         "@googletest//:gtest_main",
     ],

@@ -1,12 +1,14 @@
 # MODULE.bazel
 
-# Choose the most recent version available at
-# https://registry.bazel.build/modules/abseil-cpp.
-bazel_dep(name = "abseil-cpp", version = "20240722.0.bcr.1")
-bazel_dep(name = "googletest", version = "1.15.2")
-bazel_dep(name = "protobuf", version = "29.0-rc3")
-bazel_dep(name = "sqlite3", version = "3.47.0")
-bazel_dep(name = "rules_foreign_cc", version = "0.12.0")
-bazel_dep(name = "pcre2", version = "10.43")
+bazel_dep(name = "abseil-cpp", version = "20250127.1")
+bazel_dep(name = "protobuf", version = "30.1")
+bazel_dep(name = "sqlite3", version = "3.49.1")
+bazel_dep(name = "rules_foreign_cc", version = "0.14.0")
+bazel_dep(name = "pcre2", version = "10.46-DEV")
 bazel_dep(name = "snappy", version = "1.2.1")
 bazel_dep(name = "gflags", version = "2.2.2")
+bazel_dep(name = "googletest", version = "1.16.0")
+bazel_dep(name = "rocksdb", version = "9.10.0")
+bazel_dep(name = "cpp-httplib", version = "0.16.3.bzl.1")
+bazel_dep(name = "openssl", version = "3.3.1.bcr.1")
+bazel_dep(name = "boringssl", version = "0.20250311.0")
